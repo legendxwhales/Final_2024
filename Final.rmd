@@ -131,6 +131,26 @@ prop.table(table1, 2) * 100
 
 These numerical results provide the exact percentages of females who contracted COVID-19 after receiving either the placebo or the vaccine.Consistent with what was estimated from the bar plot, about 65% of the infected females had taken the placebo, while only about 35% had taken the vaccine. Among the females who remained uninfected, the distribution was evenly split: approximately 50% had received the placebo and 50% had received the vaccine. These values indicate that the COVID-19 vaccine is effective for females, as a much smaller proportion of vaccinated women became infected compared to those who received the placebo. This difference is substantial and meaningful.
 
+### Inferential 
+
+```{r}
+# Chi-square test
+chisq.test(table1)
+
+# Expected counts
+chisq.test(table1)$expected
+
+# Standardized residuals (optional)
+chisq.test(table1)$residuals
+
+# Fisher's Exact Test
+Msfish <- fisher.test(table1)
+Msfish
+
+```
+
+The most important result to focus on is the output from the Fisher’s Exact Test. The p-value obtained was extremely small—0.000000001—which is effectively zero. Such a small p-value indicates that the observed results are highly unlikely to have occurred by chance.As a result, we can confidently reject the null hypothesis that COVID-19 infection status is independent of sex.The odds ratio is 1.9, meaning that females who received the placebo were nearly twice as likely to contract COVID-19 compared to those who received the vaccine. This represents a meaningful difference and provides strong evidence that the vaccine is effective.
+
 ## LGBTQ
 
 
