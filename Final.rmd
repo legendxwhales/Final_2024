@@ -63,6 +63,26 @@ prop.table(table1, 2) * 100
 
 These numerical results highlight the percentages of males who contracted Covid-19 after receiving either the placebo or the vaccine.Among the males who got Covid-19, a large percentage (73.80%) had received the placebo, compared to only 26.20% who contracted the virus after taking the vaccine. For the males who remained healthy, 50.01% of those who took the placebo were fine, while 49.99% of those who received the vaccine were also healthy.These findings indicate that the Covid-19 vaccine was notably effective in males, with only 26.20% of vaccinated individuals contracting the virus, while a much higher percentage (73.80%) of those who received the placebo did. This difference is significant and suggests the vaccine's effectiveness.
 
+### Inferential Results 
+
+```{r}
+# Chi-square test
+chisq.test(table1)
+
+# Expected counts
+chisq.test(table1)$expected
+
+# Standardized residuals (optional)
+chisq.test(table1)$residuals
+
+# Fisher's Exact Test
+Msfish <- fisher.test(table1)
+Msfish
+
+```
+
+The most important result to focus on is the output from the Fisher’s Exact Test. The test produced an extremely small p-value of 0.00000000000000022, which is essentially zero. A p-value this small indicates that the observed results are highly unlikely to be due to random chance.Consequently, we can confidently reject the null hypothesis that COVID-19 infection status is independent of sex.The odds ratio is 2.815604, meaning that individuals who received the placebo were nearly three times more likely to become infected than those who received the vaccine. This represents a substantial effect and strongly suggests that the vaccine is effective.
+
 ## Females
 
 
