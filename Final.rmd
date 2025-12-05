@@ -34,6 +34,25 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 ## Males
 
+### Barplot
+
+```{r}
+dd2 <- M %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+This plot illustrates the relationship between Covid-19 infection rates, vaccine uptake, and placebo usage among the male population.The first graph displays the counts of individuals who either contracted Covid-19 or remained healthy, and whether they received the vaccine or a placebo. The second graph shows the percentage of people who had the placebo or the Covid-19 vaccine, and whether or not they contracted Covid-19. These groups are separated by their Covid-19 infection status and whether they received the placebo or vaccine.Among those who contracted Covid-19, the majority (around 75%) received the placebo, while a significantly smaller portion (about 25%) had the vaccine. Among the individuals who remained healthy, the distribution was more balanced, with a roughly 50/50 split between those who took the placebo and those who received the vaccine.The code used to generate this barplot starts with a code block labeled "dd2," which appears in the environment pane. This block contains four variables: treatment, infected, count, and percent. The second group, called "basicC," is also visible in the environment and contains 11 variables, which help create the first plot. The final code group, "basicCC," located in the files pane, contains 11 variables that are essential for generating the second, percentage-based plot.
+
 
 ## Females
 
