@@ -266,4 +266,24 @@ prop.table(table1, 2) * 100
 
 These numerical results represent the exact percentages of drug users who contracted COVID-19 after receiving either the placebo or the vaccine.Only about 8.3% of infected individuals in this group had taken the placebo, while a much larger 91.7% had received the vaccine. Among those who remained uninfected, approximately 51% had taken the placebo and 49% had taken the vaccine. These values indicate that, within this subgroup, the vaccine did not appear to be effective, as a very high percentage of vaccinated individuals still contracted COVID-19, while far fewer placebo recipients became infected. This difference is substantial and suggests markedly lower vaccine effectiveness for drug users.
 
+### Inferential Results
+
+```{r}
+# Chi-square test
+chisq.test(table1)
+
+# Expected counts
+chisq.test(table1)$expected
+
+# Standardized residuals (optional)
+chisq.test(table1)$residuals
+
+# Fisher's Exact Test
+Msfish <- fisher.test(table1)
+Msfish
+
+```
+
+The most important result for the drug-user subgroup is the output from the Fisher’s Exact Test. The p-value obtained was extremely small—0.000000000003—which is effectively zero. This indicates that the observed results are highly unlikely to be due to chance.Thus, we reject the null hypothesis in favor of the alternative.The odds ratio is 0.087, meaning that individuals who received the placebo were far less likely to contract COVID-19 than those who received the vaccine. This is a substantial effect and suggests that, for this subgroup, the vaccine does not appear to be effective.
+
 # Overall Results and Conclusions
