@@ -199,6 +199,26 @@ prop.table(table1, 2) * 100
 
 These numerical results show the exact percentages of gay individuals who contracted COVID-19 after receiving either the placebo or the vaccine.Consistent with the estimates from the bar plot, about 80% of infected individuals in this group had taken the placebo, while only about 20% had taken the vaccine. Among those who remained uninfected, 48% had received the placebo and 52% had received the vaccine. These values indicate that the COVID-19 vaccine is effective for gay individuals, as only a small proportion of vaccinated people became infected compared to those who received the placebo. This difference is substantial and highly meaningful.
 
+### Inferential Results 
+
+```{r}
+# Chi-square test
+chisq.test(table1)
+
+# Expected counts
+chisq.test(table1)$expected
+
+# Standardized residuals (optional)
+chisq.test(table1)$residuals
+
+# Fisher's Exact Test
+Msfish <- fisher.test(table1)
+Msfish
+
+```
+
+The most important result to focus on is the output from the Fisher’s Exact Test. The p-value obtained was extremely small—0.0000007—which is effectively zero. This indicates that the observed results are highly unlikely to have occurred by chance.Therefore, we can confidently reject the null hypothesis that COVID-19 infection status is independent of sex.The odds ratio is 4.3, meaning that individuals who received the placebo were roughly four times more likely to contract COVID-19 compared to those who were vaccinated. This is a substantial effect and provides strong evidence that the vaccine is effective for this group. Notably, this odds ratio is higher than the values observed for both males and females, indicating even greater relative protection.
+
 ## Druggies
 
 
