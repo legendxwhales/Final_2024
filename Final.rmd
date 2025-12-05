@@ -286,4 +286,20 @@ Msfish
 
 The most important result for the drug-user subgroup is the output from the Fisher’s Exact Test. The p-value obtained was extremely small—0.000000000003—which is effectively zero. This indicates that the observed results are highly unlikely to be due to chance.Thus, we reject the null hypothesis in favor of the alternative.The odds ratio is 0.087, meaning that individuals who received the placebo were far less likely to contract COVID-19 than those who received the vaccine. This is a substantial effect and suggests that, for this subgroup, the vaccine does not appear to be effective.
 
+```{r}
+effect <- Msfish$p.value/(Msfish$p.value +1)
+effectivenessM = Msfish$estimate/(Msfish$estimate +1)*100
+print(effectivenessM)
+```
+
+```{r}
+low=(Msfish$conf.int[1]/(Msfish$conf.int[1] +1))*100
+hi=(Msfish$conf.int[2]/(Msfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The section above presents the estimated effectiveness of the COVID-19 vaccine for drug users. Vaccine effectiveness values above 50% typically indicate meaningful protection, but the confidence interval shown here suggests that the vaccine is not effective for this subgroup.The odds ratio provides another measure of effectiveness. For drug users, the odds ratio is approximately 8.04, with a confidence interval ranging from about 2.65 to 17.86. These values indicate that the vaccine offers little to no protection for this group.
+
 # Overall Results and Conclusions
