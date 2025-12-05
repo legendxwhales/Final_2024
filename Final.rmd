@@ -121,6 +121,16 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 This plot illustrates the female portion of the population and the relationship between COVID-19 infection and whether each individual received the vaccine or a placebo.The first graph displays the raw counts of females who either contracted COVID-19 or remained uninfected, grouped by whether they received the vaccine or the placebo. The second graph shows the corresponding percentages, again separated by infection status and treatment type.From the plot, we can see that among females who became infected, roughly 65% had received the placebo, while about 35% had received the vaccine. For females who remained healthy, the distribution is close to 50/50, with the vaccine group slightly higher. Compared with the male plot, fewer females who had the placebo contracted COVID-19, and more females who had the vaccine contracted it; however, the overall pattern remains the same: individuals who received the placebo had a higher infection rate than those who were vaccinated.The code used to generate this bar plot begins with the creation of the object dd2, which appears in the environment pane and contains four variables: treatment, infected, count, and prcent (percent). The next object, basicC, contains 11 variables and is used to produce the first (count-based) plot. The final object, basicCC, also containing 11 variables, is used to generate the percentage-based plot shown second.
 
+### Numerical results 
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=F)
+prop.table(table1, 1) * 100
+prop.table(table1, 2) * 100
+```
+
+These numerical results provide the exact percentages of females who contracted COVID-19 after receiving either the placebo or the vaccine.Consistent with what was estimated from the bar plot, about 65% of the infected females had taken the placebo, while only about 35% had taken the vaccine. Among the females who remained uninfected, the distribution was evenly split: approximately 50% had received the placebo and 50% had received the vaccine. These values indicate that the COVID-19 vaccine is effective for females, as a much smaller proportion of vaccinated women became infected compared to those who received the placebo. This difference is substantial and meaningful.
+
 ## LGBTQ
 
 
