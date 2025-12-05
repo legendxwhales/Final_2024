@@ -53,6 +53,15 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 This plot illustrates the relationship between Covid-19 infection rates, vaccine uptake, and placebo usage among the male population.The first graph displays the counts of individuals who either contracted Covid-19 or remained healthy, and whether they received the vaccine or a placebo. The second graph shows the percentage of people who had the placebo or the Covid-19 vaccine, and whether or not they contracted Covid-19. These groups are separated by their Covid-19 infection status and whether they received the placebo or vaccine.Among those who contracted Covid-19, the majority (around 75%) received the placebo, while a significantly smaller portion (about 25%) had the vaccine. Among the individuals who remained healthy, the distribution was more balanced, with a roughly 50/50 split between those who took the placebo and those who received the vaccine.The code used to generate this barplot starts with a code block labeled "dd2," which appears in the environment pane. This block contains four variables: treatment, infected, count, and percent. The second group, called "basicC," is also visible in the environment and contains 11 variables, which help create the first plot. The final code group, "basicCC," located in the files pane, contains 11 variables that are essential for generating the second, percentage-based plot.
 
+### Numerical Results
+
+```{r}
+table1 <- xtabs(~infected + treatment, data=M)
+prop.table(table1, 1) * 100
+prop.table(table1, 2) * 100
+```
+
+These numerical results highlight the percentages of males who contracted Covid-19 after receiving either the placebo or the vaccine.Among the males who got Covid-19, a large percentage (73.80%) had received the placebo, compared to only 26.20% who contracted the virus after taking the vaccine. For the males who remained healthy, 50.01% of those who took the placebo were fine, while 49.99% of those who received the vaccine were also healthy.These findings indicate that the Covid-19 vaccine was notably effective in males, with only 26.20% of vaccinated individuals contracting the virus, while a much higher percentage (73.80%) of those who received the placebo did. This difference is significant and suggests the vaccine's effectiveness.
 
 ## Females
 
