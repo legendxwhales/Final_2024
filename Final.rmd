@@ -83,6 +83,23 @@ Msfish
 
 The most important result to focus on is the output from the Fisher’s Exact Test. The test produced an extremely small p-value of 0.00000000000000022, which is essentially zero. A p-value this small indicates that the observed results are highly unlikely to be due to random chance.Consequently, we can confidently reject the null hypothesis that COVID-19 infection status is independent of sex.The odds ratio is 2.815604, meaning that individuals who received the placebo were nearly three times more likely to become infected than those who received the vaccine. This represents a substantial effect and strongly suggests that the vaccine is effective.
 
+
+```{r}
+effect <- Msfish$p.value/(Msfish$p.value +1)
+effectivenessM = Msfish$estimate/(Msfish$estimate +1)*100
+print(effectivenessM)
+```
+
+```{r}
+low=(Msfish$conf.int[1]/(Msfish$conf.int[1] +1))*100
+hi=(Msfish$conf.int[2]/(Msfish$conf.int[2] +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+The section above displays the estimated effectiveness of the COVID-19 vaccine for males. Vaccine effectiveness values above 50% indicate that the vaccine provides meaningful protection. Based on the confidence interval shown, we can conclude that the vaccine is effective in reducing COVID-19 infection among males.The odds ratio also provides insight into how effective the vaccine is. For males, the odds ratio is approximately 73.8, and the corresponding effectiveness confidence interval ranges from about 68.85% to 78.32%. This interval suggests a consistently high level of protection.
+
 ## Females
 
 
