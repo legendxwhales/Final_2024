@@ -170,7 +170,24 @@ The section above displays the estimated effectiveness of the COVID-19 vaccine f
 
 ## LGBTQ
 
+### Barplot
 
+```{r}
+dd2 <- gay %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=infected,y=count,fill=treatment))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+This plot presents the subgroup of gay individuals and illustrates the relationship between COVID-19 infection status and whether each person received the vaccine or a placebo.The first graph displays the raw counts of people who either contracted COVID-19 or remained uninfected, separated by treatment type (vaccine vs. placebo). The second graph shows the corresponding percentages, again grouped by infection status and treatment. Both graphs divide the population into four categories: infected vs. not infected, and vaccinated vs. placebo.Among gay individuals who contracted COVID-19, approximately 80% had received the placebo, while only about 20% had received the vaccine. For those who remained uninfected, the distribution was roughly 48% placebo and 52% vaccine. This pattern indicates that within this subgroup, individuals who received the placebo were far more likely to contract COVID-19 compared to those who were vaccinated.The code used to generate this bar plot begins with the object dd2, which appears in the environment pane and contains four variables: treatment, infected, count, and prcent (percent). The next object, basicC, contains 11 variables and is used to create the first (count-based) plot. The final object, basicCC, also with 11 variables, is used to produce the percentage-based plot shown second.
 
 ## Druggies
 
